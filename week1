@@ -2,10 +2,10 @@ TIC TAC TOE
 
 import math
 
-# --- Game Board and Logic Functions ---
+
 
 def print_board(board):
-    """Prints the Tic-Tac-Toe board in a human-readable format."""
+    
     print("\n-------------")
     print(f"| {board[0]} | {board[1]} | {board[2]} |")
     print("-------------")
@@ -15,7 +15,7 @@ def print_board(board):
     print("-------------")
 
 def check_win(board, player):
-    """Checks if a player has won the game."""
+    
     win_conditions = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columns
@@ -27,22 +27,15 @@ def check_win(board, player):
     return False
 
 def check_draw(board):
-    """Checks if the game is a draw (no empty spaces left)."""
+    
     return ' ' not in board
 
 def is_valid_move(board, move):
-    """Checks if a move is valid."""
+    
     return 0 <= move < 9 and board[move] == ' '
 
-# --- AI (Minimax Algorithm) ---
 
 def minimax(board, is_maximizing):
-    """
-    The Minimax algorithm to find the optimal move.
-    :param board: The current game board.
-    :param is_maximizing: True for the AI (maximizing player), False for human (minimizing player).
-    :return: The best score for the current state.
-    """
     if check_win(board, 'O'):
         return 1
     if check_win(board, 'X'):
@@ -70,7 +63,7 @@ def minimax(board, is_maximizing):
         return best_score
 
 def find_best_move(board):
-    """Finds the best move for the AI using minimax."""
+    
     best_score = -math.inf
     best_move = -1
     for i in range(9):
@@ -83,10 +76,10 @@ def find_best_move(board):
                 best_move = i
     return best_move
 
-# --- Main Game Loop ---
+
 
 def main():
-    """The main function to run the game."""
+    
     board = [' ' for _ in range(9)]
     print("Welcome to Tic-Tac-Toe!")
     print("You are 'X', the AI is 'O'.")
@@ -139,15 +132,14 @@ import time
 
 class VacuumCleaner:
     def __init__(self):
-        # Quadrants in clockwise order
+        
         self.quadrants = ["Q1", "Q2", "Q3", "Q4"]
-        # Randomly assign clean/dirty status
         self.status = {q: random.choice(["clean", "dirty"]) for q in self.quadrants}
         self.current_index = 0
     
     def clean(self, quadrant):
         print(f"Vacuum is cleaning {quadrant}...")
-        time.sleep(1)  # simulate cleaning time
+        time.sleep(1)  
         self.status[quadrant] = "clean"
         print(f"{quadrant} is now clean.")
     
@@ -172,6 +164,6 @@ class VacuumCleaner:
         print("\nFinished cleaning cycles!")
         print("Final status:", self.status)
 
-# Run simulation
+
 vacuum = VacuumCleaner()
-vacuum.start(cycles=2)  # Runs 2 full clockwise rotations
+vacuum.start(cycles=2)  
